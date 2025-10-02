@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Search, Filter, Grid, List, Star, ShoppingCart, Heart } from 'lucide-react';
+import Link from 'next/link';
 
 interface Product {
   id: number;
@@ -327,9 +328,18 @@ export default function ProductsPage() {
                     <ShoppingCart className="h-4 w-4 inline mr-2" />
                     Add to Cart
                   </button>
-                  <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200">
-                    View Details
-                  </button>
+                  {product.category === 'Air Vents' ? (
+                    <Link 
+                      href={`/categories/air-vents/${product.name.split(' ').pop()}`}
+                      className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                    >
+                      View Details
+                    </Link>
+                  ) : (
+                    <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                      View Details
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
